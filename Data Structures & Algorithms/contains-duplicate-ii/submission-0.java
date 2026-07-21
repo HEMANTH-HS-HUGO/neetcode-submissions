@@ -1,0 +1,19 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        HashSet<Integer> hs = new HashSet<>();
+        int i=0;
+
+        for(int j=0;j<nums.length;j++){
+            if(j-i>k){
+                hs.remove(nums[i]);
+                i++;
+            }
+            if(hs.contains(nums[j])){
+                return true;
+            }
+            hs.add(nums[j]);
+        }
+        return false;
+        
+    }
+}
